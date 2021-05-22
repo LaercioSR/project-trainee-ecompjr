@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\FederationController;
-use App\Models\JuniorEnterprise;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,12 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/federation', [FederationController::class, 'index']);
-Route::get('/federation/new', [FederationController::class, 'create']);
-Route::post('/federation', [FederationController::class, 'store']);
-Route::delete('/federation/{id}', [FederationController::class, 'destroy']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/junior-enterprise', [JuniorEnterprise::class, 'index']);
-Route::get('/junior-enterprise/new', [JuniorEnterprise::class, 'create']);
-Route::post('/junior-enterprise', [JuniorEnterprise::class, 'store']);
-Route::delete('/junior-enterprise/{id}', [JuniorEnterprise::class, 'destroy']);
+require __DIR__.'/auth.php';
