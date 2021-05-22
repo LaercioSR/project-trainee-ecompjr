@@ -14,9 +14,8 @@ class FederationController extends Controller
      */
     public function index()
     {
-        $federations = Federation::all();
-
-        dd($federations);
+        $federations = Federation::paginate();
+        return view('federations', compact('federations'));
     }
 
     /**
@@ -26,7 +25,7 @@ class FederationController extends Controller
      */
     public function create()
     {
-        //
+        return view('federations_create');
     }
 
     /**
@@ -41,7 +40,7 @@ class FederationController extends Controller
         $federation->name = $request->name;
         $federation->uf = $request->uf;
         $federation->save();
-        dd($federation);
+        return redirect("/federation/new");
     }
 
     /**
@@ -63,7 +62,8 @@ class FederationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $federation = Federation::find($id);
+        return view('federations_update', compact('federation'));
     }
 
     /**
@@ -75,7 +75,11 @@ class FederationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $federation = Federation::find($id);
+        $federation->name = $request->name;
+        $federation->uf = $request->uf;
+        $federation->save();
+        return redirect()->route('federation.index');
     }
 
     /**
@@ -86,7 +90,8 @@ class FederationController extends Controller
      */
     public function destroy($id)
     {
-        $federation = Federation($id);
+        $federation = Federation::find($id);
         $federation->delete();
+        return redirect("/federation");
     }
 }

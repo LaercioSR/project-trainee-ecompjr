@@ -86,7 +86,7 @@ class JuniorEnterpriseController extends Controller
      */
     public function destroy($id)
     {
-        $junior_enterprise = JuniorEnterprise($id);
+        $junior_enterprise = JuniorEnterprise::find($id);
         $junior_enterprise->delete();
     }
 }
