@@ -15,8 +15,17 @@ class JuniorEnterpriseController extends Controller
      */
     public function index()
     {
-        $junior_enterprises = JuniorEnterprise::paginate();
-        return view('junior_enterprises', compact('junior_enterprises'));
+        $federations = Federation::all();
+        $query = JuniorEnterprise::query();
+        if(isset(request()->search)) {
+            $search = str_replace('+', '%', '%'.request()->search.'%');
+            $query->where('name', 'like', $search);
+        }
+        if(isset(request()->federation)) {
+            $query->where('federation_id', request()->federation);
+        }
+        $junior_enterprises = $query->paginate();
+        return view('junior_enterprises', [ 'junior_enterprises' => $junior_enterprises, 'federations' => $federations ]);
     }
 
     /**

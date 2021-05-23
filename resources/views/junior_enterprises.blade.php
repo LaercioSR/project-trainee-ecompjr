@@ -8,9 +8,39 @@
     <div class="overflow-x-auto">
         <div class="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
             <div class="w-full lg:w-5/6">
-                <div class="flex justify-center items-center cursor-pointer h-12 w-full lg:w-1/6 font-bold rounded-full bg-blue-400 hover:bg-blue-500">
-                    <a href="{{route('junior_enterprise.create')}}" class="text-white">NOVA EMPRESA JÚNIOR</a>
+                <div class="max-w-8xl mx-auto px-2 sm:px-4 lg:px-6">
+                    <div class="flex justify-between h-14">
+                        <div class="flex sm:ml-6 shadow-xl justify-center items-center cursor-pointer w-full lg:w-1/6 font-bold rounded-full bg-blue-500 hover:bg-blue-400">
+                            <a href="{{route('junior_enterprise.create')}}" class="text-white">NOVA EMPRESA JÚNIOR</a>
+                        </div>
+
+                        <div class="flex items-center">
+                            <form action="{{route('junior_enterprise.index')}}" class="bg-white flex items-center rounded-full shadow-xl h-14">
+                                <input class="rounded-l-full w-full py-4 px-6 text-gray-700 leading-tight focus:outline-none border-none focus:border-none" id="search" name="search" type="text" placeholder="Pesquisar">
+
+                                <div class="p-3">
+                                    <button type="bubmit" class="bg-blue-500 text-white rounded-full p-2 hover:bg-blue-400 focus:outline-none w-11 h-11 flex items-center justify-center">
+                                        <x-icon-search />
+                                    </button>
+                                </div>
+                            </form>
+
+                            <div class="px-3">
+                                <select name="federation" id="federation" tabindex="0" onchange="handleFederation()" class="rounded-full h-14 shadow-xl border-none text-gray-700">
+                                    <option value="all" {{ request()->federation == "all" ? "selected" : ""}}>Todas Federações</option>
+                                    @foreach($federations as $federation)
+                                        @if (request()->federation == $federation->id)
+                                            <option value="{{ $federation->id }}" selected>{{ $federation->name }}</option>
+                                        @else
+                                            <option value="{{ $federation->id }}">{{ $federation->name }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="bg-white shadow-md rounded my-6">
                     <table class="min-w-max w-full table-fixed">
                         <thead>
@@ -65,7 +95,7 @@
                 </div>
                 <div class="flex flex-col items-center my-12">
                     <div class="flex text-gray-700">
-                        <a href="{{route('junior_enterprise.index')}}?page={{ $junior_enterprises->currentPage()-1 }}">
+                        <a href="{{route('junior_enterprise.index')}}?page={{ $junior_enterprises->currentPage()-1 }}{{ isset(request()->search) ? "&search=".request()->search : "" }}{{ isset(request()->federation) ? "&federation=".request()->federation : "" }}">
                             <div class="h-12 w-12 mr-1 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left w-6 h-6">
                                     <polyline points="15 18 9 12 15 6"></polyline>
@@ -80,13 +110,13 @@
                                     </div>
                                 @else
                                     <div class="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full hover:bg-gray-300">
-                                        <a href="{{route('junior_enterprise.index')}}?page={{ $i }}">{{ $i }}</a>
+                                        <a href="{{route('junior_enterprise.index')}}?page={{ $i }}{{ isset(request()->search) ? "&search=".request()->search : "" }}{{ isset(request()->federation) ? "&federation=".request()->federation : "" }}">{{ $i }}</a>
                                     </div>
                                 @endif
                             @endfor
                             <div class="w-12 h-12 md:hidden flex justify-center items-center cursor-pointer leading-5 transition duration-150 ease-in rounded-full bg-blue-600 text-white">{{ $junior_enterprises->currentPage() }}</div>
                         </div>
-                        <a href="{{route('junior_enterprise.index')}}?page={{ $junior_enterprises->currentPage()+1 }}">
+                        <a href="{{route('junior_enterprise.index')}}?page={{ $junior_enterprises->currentPage()+1 }}{{ isset(request()->search) ? "&search=".request()->search : "" }}{{ isset(request()->federation) ? "&federation=".request()->federation : "" }}">
                             <div class="h-12 w-12 ml-1 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right w-6 h-6">
                                     <polyline points="9 18 15 12 9 6"></polyline>
@@ -98,4 +128,11 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function handleFederation() {
+            const federation = document.getElementById("federation").value;
+            window.location.replace("{{ route('junior_enterprise.index') }}?federation="+federation);
+        }
+    </script>
 </x-app-layout>
