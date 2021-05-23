@@ -17,8 +17,13 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('federation.index')" :active="request()->routeIs('federation')">
+                    <x-nav-link :href="route('federation.index')" :active="request()->routeIs('federation.index')">
                         {{ __('Federações') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('junior_enterprise.index')" :active="request()->routeIs('junior_enterprise.index')">
+                        {{ __('Empresas Júniores') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -75,6 +80,11 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('federation.index')" :active="request()->routeIs('federation.index')">
                 {{ __('Federações') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('junior_enterprise.index')" :active="request()->routeIs('junior_enterprise.index')">
+                {{ __('Empresas Júniores') }}
             </x-responsive-nav-link>
         </div>
 

@@ -10,6 +10,6 @@ class JuniorEnterprise extends Model
     use HasFactory;
 
     public function federation() {
-        return $this->hasOne(Federation::class);
+        return $this->belongsTo(Federation::class);
     }
 }

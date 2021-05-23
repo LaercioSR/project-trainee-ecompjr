@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Federation;
 use App\Models\JuniorEnterprise;
 use Illuminate\Http\Request;
 
@@ -14,9 +15,8 @@ class JuniorEnterpriseController extends Controller
      */
     public function index()
     {
-        $junior_enterprises = JuniorEnterprise::all();
-
-        dd($junior_enterprises);
+        $junior_enterprises = JuniorEnterprise::paginate();
+        return view('junior_enterprises', compact('junior_enterprises'));
     }
 
     /**
@@ -26,7 +26,8 @@ class JuniorEnterpriseController extends Controller
      */
     public function create()
     {
-        //
+        $federations = Federation::all();
+        return view('junior_enterprises_create', compact('federations'));
     }
 
     /**
@@ -39,9 +40,9 @@ class JuniorEnterpriseController extends Controller
     {
         $junior_enterprise = new juniorEnterprise();
         $junior_enterprise->name = $request->name;
-        $junior_enterprise->federation_id = $request->federation_id;
+        $junior_enterprise->federation_id = $request->federation;
         $junior_enterprise->save();
-        dd($junior_enterprise);
+        return redirect("/junior-enterprise/new");
     }
 
     /**
@@ -63,7 +64,9 @@ class JuniorEnterpriseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $federations = Federation::all();
+        $junior_enterprise = JuniorEnterprise::find($id);
+        return view('junior_enterprises_update', [ 'junior_enterprise' => $junior_enterprise, 'federations' => $federations ]);
     }
 
     /**
@@ -75,7 +78,11 @@ class JuniorEnterpriseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $junior_enterprise = JuniorEnterprise::find($id);
+        $junior_enterprise->name = $request->name;
+        $junior_enterprise->federation_id = $request->federation;
+        $junior_enterprise->save();
+        return redirect()->route('junior_enterprise.index');
     }
 
     /**
@@ -88,5 +95,6 @@ class JuniorEnterpriseController extends Controller
     {
         $junior_enterprise = JuniorEnterprise::find($id);
         $junior_enterprise->delete();
+        return redirect("/junior-enterprise");
     }
 }
