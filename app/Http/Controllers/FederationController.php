@@ -14,7 +14,15 @@ class FederationController extends Controller
      */
     public function index()
     {
-        $federations = Federation::paginate();
+        $query = Federation::query();
+        if(isset(request()->search)) {
+            $search = str_replace('+', '%', '%'.request()->search.'%');
+            $query->where('name', 'like', $search);
+        }
+        if(isset(request()->uf)) {
+            $query->where('uf', request()->uf);
+        }
+        $federations = $query->paginate();
         return view('federations', compact('federations'));
     }
 
