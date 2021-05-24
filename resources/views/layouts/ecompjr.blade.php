@@ -8,13 +8,13 @@
                 <p style="font-weight: bold">EMPRESA JÚNIOR DE ENGENHARIA DE COMPUTAÇÃO DA UEFS</p>
             </div>
 
-            <div class="flex justify-center mt-12 text-gray-700">
-                <p>Projeto Desenvolvido como parte do programa trainee da Ecomp Jr.</p>
+            <div class="flex justify-center mt-6 text-gray-700">
+                <p>Projeto desenvolvido como parte do programa trainee da Ecomp Jr.</p>
             </div>
 
             <div class="mt-12 mr-48 ml-48 text-justify">
-                <h2 class="text-2xl font-bold">SOBRE A ECOMP JR:</h2>
-                <div class="text-lg	justify-center text-gray-900">
+                <h2 class="text-2xl font-bold text-blue-700">SOBRE A ECOMP JR:</h2>
+                <div class="text-lg	justify-center text-gray-900 ml-4">
                     <p>
                         Empresa Júnior de Engenharia de Computação, composta por alunos do curso da Universidade Estadual de Feira de Santana, que promove impactos positivos em micro e pequenas empresas por meio de soluções tecnológicas.
                     </p>
@@ -23,27 +23,27 @@
                     </p>
                 </div>
                 <div class="mt-4">
-                    <h3 class="text-1xl font-bold">MISSÃO:</h3>
-                    <span>
+                    <h3 class="text-1xl font-bold text-blue-600">MISSÃO:</h3>
+                    <p class="ml-4">
                         Através da vivência empresarial e trabalho em equipe, formar profissionais inovadores, comprometidos e capazes de vencer desafios futuros.
-                    </span>
-                    <h3 class="text-1xl font-bold">VISÃO:</h3>
-                    <span>
+                    </p>
+                    <h3 class="text-1xl font-bold text-blue-600">VISÃO:</h3>
+                    <p class="ml-4">
                         Ser uma empresa que realiza projetos de impacto, mais conectada ao movimento empresa júnior e com grande reconhecimento dentro e fora da universidade.
-                    </span>
-                    <h3 class="text-1xl font-bold">VALORES:</h3>
-                    <span>
+                    </p>
+                    <h3 class="text-1xl font-bold text-blue-600">VALORES:</h3>
+                    <p class="ml-4">
                         Protagonismo, Cooperatividade, Assiduidade, Resiliência, Constância em resultados, Evolução com os erros, Conexão com o Movimento, Foco na Qualidade, Ética e Empatia.
-                    </span>
+                    </p>
                 </div>
                 <div class="mt-10 mb-10">
-                    <h3 class="text-1xl font-bold">Serviços Oferecidos:</h3>
-                    <ul class="list-disc">
-                        <li>Sites</li>
-                        <li>Sistemas - Locais</li>
-                        <li>Aplicativos Mobile</li>
-                        <li>Sistema Web</li>
-                        <li>eCommerce</li>
+                    <h3 class="text-1xl font-bold text-blue-700">Serviços Oferecidos:</h3>
+                    <ul class="list-none">
+                        <li class="ml-4 flex"><x-icon-website class="mr-2" fill="#3B82F6"/> Sites</li>
+                        <li class="ml-4 flex"><x-icon-desktop class="mr-2" fill="#3B82F6"/> Sistemas - Locais</li>
+                        <li class="ml-4 flex"><x-icon-mobile class="mr-2" fill="#3B82F6"/> Aplicativos Mobile</li>
+                        <li class="ml-4 flex"><x-icon-cloud class="mr-2" fill="#3B82F6"/> Sistema Web</li>
+                        <li class="ml-4 flex"><x-icon-ecommerce class="mr-2" fill="#3B82F6"/> eCommerce</li>
                     </ul>
                 </div>
             </div>

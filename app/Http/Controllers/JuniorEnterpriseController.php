@@ -24,7 +24,7 @@ class JuniorEnterpriseController extends Controller
         if(isset(request()->federation)) {
             $query->where('federation_id', request()->federation);
         }
-        $junior_enterprises = $query->paginate();
+        $junior_enterprises = $query->paginate(8);
         return view('junior_enterprises', [ 'junior_enterprises' => $junior_enterprises, 'federations' => $federations ]);
     }
 

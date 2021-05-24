@@ -1,62 +1,92 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Projeto Trainee Ecomp Jr.
+<p align="center">Projeto desenvolvido como parte final do programa trainee da <a href="https://ecompjr.com.br/">Ecomp Jr.</a>.</p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<!--ts-->
+   * [Sobre](#sobre)
+   * [Features](#features)
+   * [Como usar](#como-usar)
+      * [Pre Requisitos](#pre-requisitos)
+      * [Rodando](#rodando)
+   * [Tecnologias](#tecnologias-🛠)
+<!--te-->
 
-## About Laravel
+<h4 align="center"> 
+	✨  Projeto Finalizado  ✨
+</h4>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Sobre
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Projeto consiste em um portal para cadastro de empresa júniores e suas federações.
+<img src="screenshots/home_screen.png" alt="home_screen" width="400" height="300"/> <img src="screenshots/federations_screen.png" alt="federations_screen" width="400" height="300"/>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Features
 
-## Learning Laravel
+- Sistema de Login
+- CRUD de Empresa Júnior
+- CRUD de Federação
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Como Usar
+### Pré Requisitos
+Para rodar o projeto é preciso ter instalado o laravel, que pode ser encontrado [aqui](https://laravel.com/docs/).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Já para o banco de dados será necessário ter o MySQL Server instalado. Você pode encontrar [aqui](https://dev.mysql.com/downloads/mysql/).
 
-## Laravel Sponsors
+### Rodando
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+**Clonando o repositório**
 
-### Premium Partners
+```
+$ git clone https://github.com/LaercioSR/project-trainee-ecompjr
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+$ cd project-trainee-ecompjr
+```
 
-## Contributing
+**Instalando dependências**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```
+$ composer update
+```
 
-## Code of Conduct
+**Configurando o banco de dados**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Primeiramente você deve criar um database MySQL local para o projeto.
 
-## Security Vulnerabilities
+Copie o arquivo .env.example executando para linux ou mac:
+```
+$ cp .env.example .env
+```
+ou para windows:
+```
+$ copy .env.example .env
+```
+E altere as informações necessárias de banco de dados.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Depois é necessário gerar uma chave, para isso é só usar o comando:
 
-## License
+```
+$ php artisan key:generate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+Rode os comandos abaixo para criar as tabelas já pré-definidas:
+```
+$ php artisan migrate
+
+```
+### Executando
+
+Com as dependências instaladas e banco de dados configurado corretamente, agora você pode executar o sistema:
+
+```
+$ php artisan serve
+```
+
+E acessar a aplicação web por:
+```
+localhost:8000
+```
+## Tecnologias 🛠 
+
+As seguintes ferramentas foram usadas na construção do projeto:
+- [Laravel](https://laravel.com/)
+- [Tailwind CSS](https://tailwindcss.com/)

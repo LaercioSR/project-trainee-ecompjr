@@ -22,7 +22,7 @@ class FederationController extends Controller
         if(isset(request()->uf)) {
             $query->where('uf', request()->uf);
         }
-        $federations = $query->paginate();
+        $federations = $query->paginate(8);
         return view('federations', compact('federations'));
     }
 
